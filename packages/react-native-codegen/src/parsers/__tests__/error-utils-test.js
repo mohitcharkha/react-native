@@ -17,13 +17,16 @@ const {
   throwIfUnusedModuleInterfaceParserError,
   throwIfWrongNumberOfCallExpressionArgs,
   throwIfIncorrectModuleRegistryCallTypeParameterParserError,
+  throwIfModuleTypeIsUnsupported,
 } = require('../error-utils');
+
 const {
   ModuleInterfaceNotFoundParserError,
   MoreThanOneModuleRegistryCallsParserError,
   UnusedModuleInterfaceParserError,
   IncorrectModuleRegistryCallArityParserError,
   IncorrectModuleRegistryCallTypeParameterParserError,
+  UnsupportedModulePropertyParserError,
 } = require('../errors');
 
 describe('throwIfModuleInterfaceNotFound', () => {
@@ -444,9 +447,7 @@ describe('throwIfUntypedModule', () => {
   });
 });
 
-describe('throwIfMoreThanOneModuleRegistryCalls', () => {
-  const {throwIfModuleTypeIsUnsupported} = require('../error-utils.js');
-  const {UnsupportedModulePropertyParserError} = require('../errors.js');
+describe('throwIfModuleTypeIsUnsupported', () => {
   const hasteModuleName = 'moduleName';
   const property = {value: 'value', key: {name: 'name'}};
   it("don't throw error if module type is FunctionTypeAnnotation in Flow", () => {
